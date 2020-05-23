@@ -1,8 +1,10 @@
-# devquiz
+## DOCUMENTATION
 
-> My ultimate Nuxt.js project
+#### This is a modern and ease to use flashcard application, meant to help students learn what matters.  
 
-## Build Setup
+This project is made with Nuxtjs and It's meant to integrate with [DEV QUIZ API](https://github.com/pogbyte/dev-quiz-backend).
+
+## How to Run the project
 
 ```bash
 # install dependencies
