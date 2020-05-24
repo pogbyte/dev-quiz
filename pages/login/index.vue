@@ -46,9 +46,10 @@ export default {};
   min-height: 100vh;
   background: #22222c url(~assets/img/login-bg-astros.png) no-repeat 0% 100%;
   font-family: "Roboto", sans-serif;
-  padding-top: 5rem;
+  padding-top: 3rem;
   &__logo {
-    width: 100%;
+    width: 38%;
+    margin: auto;
     text-align: center;
     img {
       display: inline-block;
@@ -63,7 +64,7 @@ export default {};
       font-family: "Roboto", sans-serif;
       color: white;
       position: relative;
-      padding-top: 1.6rem;
+      padding-top: 1.2rem;
     }
     &__label {
       display: block;
@@ -99,7 +100,7 @@ export default {};
       outline: none;
       border: none;
       border-bottom: 2px solid #3e4149;
-      padding: 1.2rem 1.5rem;
+      padding: 1rem 1.2rem;
 
       &::-webkit-input-placeholder {
         font-family: inherit;
@@ -152,7 +153,7 @@ export default {};
         rgba(155, 119, 227, 1) 100%
       );
         z-index: -1;
-        
+
       }
 
       &:hover {
