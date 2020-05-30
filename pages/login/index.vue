@@ -13,7 +13,7 @@
             id="username"
             v-model="username"
           />
-          <label for="username" class="login__form__label">E-mail</label>
+          <label for="username" class="login__form__label">Username</label>
         </div>
         <div class="login__form__group">
           <input
@@ -69,6 +69,8 @@ export default {
         .$post("/auth/login", formData)
         .then(res => {
           this.$store.state.token = res.Authorization
+          // localStorage.setItem('apollo-token', res.Authorization)
+          this.$apolloHelpers.onLogin(res.Authorization, undefined, { expires: 1 })
           this.$router.push('/about')
           }
         )

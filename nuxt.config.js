@@ -39,8 +39,24 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
-     '@nuxtjs/axios',
+     "@nuxtjs/axios",
+     '@nuxtjs/apollo'
   ],
+  apollo: {
+    clientConfigs:{
+      default: {
+        httpEndpoint: "https://flashcards-backend.herokuapp.com/graphql",
+        tokenName: 'apollo-token'
+      },
+      browser: {
+        httpEndpoint: "/graphql",
+      },
+      // default: {
+      //   httpEndpoint: "https://flashcards-backend.herokuapp.com",
+      //   browserHttpEndpoint: '/graphql',
+      // }
+    }
+  },
   /*
   ** Build configuration
   */
