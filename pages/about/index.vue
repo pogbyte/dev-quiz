@@ -1,6 +1,6 @@
 <template>
   <div>
-    home
+    
   </div>
 </template>
 
@@ -14,10 +14,10 @@ export default {
   methods: {
 
   },
-  mounted(){
-    this.$axios.$get('/getpost')
+  created(){
+    console.log('This is AMERIKA')
+    console.log(this.$store.state.token)
   }
-
 }
 </script>
 

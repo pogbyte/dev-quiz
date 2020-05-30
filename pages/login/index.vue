@@ -6,15 +6,27 @@
       </div>
       <form class="login__form">
         <div class="login__form__group">
-          <input type="email" placeholder=" " class="login__form__input" id="email" />
-          <label for="email" class="login__form__label">E-mail</label>
+          <input
+            type="text"
+            placeholder=" "
+            class="login__form__input"
+            id="username"
+            v-model="username"
+          />
+          <label for="username" class="login__form__label">E-mail</label>
         </div>
         <div class="login__form__group">
-          <input type="password" placeholder=" " class="login__form__input" id="password" />
+          <input
+            type="password"
+            placeholder=" "
+            class="login__form__input"
+            id="password"
+            v-model="password"
+          />
           <label for="password" class="login__form__label">Password</label>
           <a class="login__form__sub-label" href="javascript:void(0)">Forgot your password?</a>
         </div>
-        <a href="javascript:void(0)" class="login__form__btn">LOGIN</a>
+        <a href="javascript:void(0)" class="login__form__btn" @click="login()">LOGIN</a>
         <div class="login__link login__link--1">
           <a href>Create Your Account</a>
         </div>
@@ -38,7 +50,34 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      username: null,
+      password: null
+    };
+  },
+  methods: {
+    login() {
+      let pass = new Buffer(this.password).toString("base64");
+      const formData = {
+        username: this.username,
+        password: pass
+      };
+
+      this.$axios
+        .$post("/auth/login", formData)
+        .then(res => {
+          this.$store.state.token = res.Authorization
+          this.$router.push('/about')
+          }
+        )
+        .catch(error => console.log(error));
+
+    }
+  },
+  mounted() {}
+};
 </script>
 
 <style lang="scss">
@@ -146,18 +185,17 @@ export default {};
         width: 100%;
         top: 0;
         border-radius: 38px;
-         background: rgb(129, 78, 236);
-      background: linear-gradient(
-        45deg,
-        rgba(129, 78, 236, 1) 64%,
-        rgba(155, 119, 227, 1) 100%
-      );
+        background: rgb(129, 78, 236);
+        background: linear-gradient(
+          45deg,
+          rgba(129, 78, 236, 1) 64%,
+          rgba(155, 119, 227, 1) 100%
+        );
         z-index: -1;
-
       }
 
       &:hover {
-          background: #fff;
+        background: #fff;
         &::before {
           transform: scale(1.03);
         }
@@ -202,9 +240,9 @@ export default {};
     &__icon {
       margin: 0 1rem;
       cursor: pointer;
-      transition: all .2s ease-in-out;
-      &:hover{
-          transform: scale(1.05);
+      transition: all 0.2s ease-in-out;
+      &:hover {
+        transform: scale(1.05);
       }
     }
   }
